@@ -24,7 +24,7 @@ digest <- function(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
                    serialize=TRUE, file=FALSE, length=Inf,
                    skip="auto", ascii=FALSE, raw=FALSE, seed=0,
                    errormode=c("stop","warn","silent")) {
-    
+
     algo <- match.arg(algo)
     errormode <- match.arg(errormode)
 
@@ -38,7 +38,7 @@ digest <- function(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
             return(invisible(NULL))
         }
     }
-    
+
     if (is.infinite(length)) {
         length <- -1               # internally we use -1 for infinite len
     }
@@ -73,7 +73,7 @@ digest <- function(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
     if (file && !is.character(object))
         return(.errorhandler("file=TRUE can only be used with a character object",
                              mode=errormode))
-    ## HB 14 Mar 2007:  null op, only turned to char if alreadt char
+    ## HB 14 Mar 2007:  null op, only turned to char if already char
     ##if (!inherits(object,"raw"))
     ##  object <- as.character(object)
     algoint <- switch(algo,
